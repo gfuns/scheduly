@@ -50,7 +50,7 @@
         </div> <!-- / .row -->
     </div>
     <div class="table-responsive">
-        <table id="search-table" class="table table-nowrap card-table">
+        <table id="search-table" class="table table-nowrap card-table cs-sty">
             <thead>
                 <tr>
 
@@ -67,7 +67,7 @@
             <tbody class="list">
                 @foreach ($users as $user)
                 <tr>
-                    <td>{{$loop->index + 1}}</td>
+                    <td>{{$marker['index']++}}</td>
                     <td>{{$user->first_name}}</td>
                     <td>{{$user->last_name}}</td>
                     <td>{{$user->email}}</td>
@@ -79,7 +79,14 @@
             @endforeach
         </tbody>
     </table>
+    <div> 
+        <span class="paginate-desc">Showing {{$marker['begin']}} to {{$marker['end']}} of {{number_format($totalRecord)}} Records</span>                 
+        <span class="paginate">{{$users->links()}}</span>
+    </div>
 </div>
+
+
+
 @if(count($users) == 0)
 <div class="text-70 text-center">
     <li class='fa fa-frown'></li>

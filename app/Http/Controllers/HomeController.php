@@ -132,8 +132,10 @@ class HomeController extends Controller
      * @return \App\Models\User
      */
     public function registeredUsers(){
-        $users = User::where("role", 1)->get();
-        return view('admin.registered_users', compact('users'));
+        $totalRecord = User::where("role", 1)->count();
+        $marker = $this->getMarkers($totalRecord, request()->page);
+        $users = User::where("role", 1)->paginate(10);
+        return view('admin.registered_users', compact('users', 'totalRecord', 'marker'));
     }
 
 
@@ -185,6 +187,29 @@ class HomeController extends Controller
         }else{
             return response()->json(['erorr' => 'Something Went Wrong']);
         }
+    }
+
+    public function getMarkers($lastRecord, $pageNum){
+        if($pageNum == null){
+            $pageNum = 1;
+        }
+        $end = (10 * ((int)$pageNum));
+        $marker = array();
+        if((int)$pageNum == 1){
+            $marker["begin"] = (int)$pageNum;
+            $marker["index"] = (int)$pageNum;
+        }else{
+            $marker["begin"] = number_format(((10 * ((int)$pageNum))-9),0);
+            $marker["index"] = number_format(((10 * ((int)$pageNum))-9),0);
+        }
+
+        if($end > $lastRecord){
+            $marker["end"] = number_format($lastRecord,0);
+        }else{
+            $marker["end"] = number_format($end,0);
+        }
+
+        return $marker;
     }
 
 }

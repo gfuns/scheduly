@@ -14500,3 +14500,18 @@ button:focus {
     #el2 { order: 3; }
     #el3 { order: 2; } 
 }
+
+.list tr:last-child{
+    border-bottom: 1px solid #edf2f9;
+}
+
+ .paginate{
+    float: right;
+    padding: 30px;
+    /* display: inline; */
+  }
+
+  .paginate-desc{
+    padding: 30px;
+    float: left;
+  }
