@@ -140,9 +140,22 @@
                     <td>{{$req->status == "Cancelled" ? "Cancelled by you" : $req->status}}</td>
                     <td>
                       @if($req->status == "Pending")
-                        <a href="{{route('user.cancelAppointment', [$req->id])}}" onclick="return confirm('Are you sure you want to cancel this request?');"><div class="badge badge-soft-danger"><i class="fa fa-times"></i> Cancel Request</div></a>
+
+                      <div class="dropdown">
+                          <button id="{{$req->id}}" class="dropbtn btn btn-primary btn-sm" onclick="myFunction(this.id)">&nbsp; Action &nbsp;</button>
+                          <div id="myDropdown{{$req->id}}" class="dropdown-content">
+                            <a href="#">View Additional Info</a>
+                            <a href="{{route('admin.acceptAppointment', [$req->id])}}" onclick="return confirm('Are you sure you want to accept this request?')">Accept Request</a>
+                            <a href="{{route('admin.rejectAppointment', [$req->id])}}" onclick="return confirm('Are you sure you want to reject this request?')">Reject Request</a>
+                          </div>
+                      </div>
                         @else
-                            <div class="badge badge-soft-dark" style="cursor:pointer"><i class="fa fa-times"></i> Cancel Request</div>
+                        <button id="{{$req->id}}" class="dropbtn btn btn-primary btn-sm" onclick="myFunction(this.id)">&nbsp; Action &nbsp;</button>
+                          <div id="myDropdown{{$req->id}}" class="dropdown-content">
+                            <a href="#">View Additional Info</a>
+                            <a href="#">Accept Request</a>
+                            <a href="#">Reject Request</a>
+                          </div>
                         @endif
                       </td>                    
                 </tr>

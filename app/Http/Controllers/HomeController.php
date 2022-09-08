@@ -213,7 +213,7 @@ class HomeController extends Controller
     }
 
 
-    public function acceptedAppointment($id){
+    public function acceptAppointment($id){
         $request = AppointmentRequests::find($id);
         $request->status = "Accepted";
         if($request->save()){
