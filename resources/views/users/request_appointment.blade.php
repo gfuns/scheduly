@@ -1,7 +1,7 @@
 @extends('users.layouts.app')
 
 @section('content')
-@section('title', 'Scheduly  - Update Profile')
+@section('title', 'Scheduly  - Request An Appointment')
 <!-- MAIN CONTENT -->
 <div class="main-content bg-fixed-bottom" >
 

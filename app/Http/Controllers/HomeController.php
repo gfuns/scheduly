@@ -33,7 +33,7 @@ class HomeController extends Controller
             ];
             return view('admin.dashboard', compact('params'));
         }else{
-            return view('users.dashboard');
+            return redirect()->route('user.dashboard');
         }
         
     }

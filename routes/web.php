@@ -17,15 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/calendar', [App\Http\Controllers\AppointmentController::class, 'calendar'])->name('calendar');
-Route::get('/finish-up', [App\Http\Controllers\AppointmentController::class, 'finishUp'])->name('finishUp');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //User Routes
+Route::get('/dashboard', [App\Http\Controllers\UserController::class, 'dashboard'])->name('user.dashboard');
+
 Route::get('/request-appointment', [App\Http\Controllers\UserController::class, 'showAppointmentForm'])->name('user.requestAppointment');
+
+Route::get('/appointment-requests', [App\Http\Controllers\UserController::class, 'appointmentRequests'])->name('user.appointmentRequests');
 
 Route::get('/settings', [App\Http\Controllers\UserController::class, 'settings'])->name('user.settings');
 

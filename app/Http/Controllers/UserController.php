@@ -22,6 +22,11 @@ class UserController extends Controller
     }
 
 
+    public function dashboard(){
+        $recentRequests = AppointmentRequests::where("user_id", Auth::user()->id)->whereDate("created_at", today())->limit(10)->get();
+        return view('users.dashboard', compact('recentRequests'));
+    }
+
     
     /**
      * Show the user settings page.
@@ -131,4 +136,38 @@ class UserController extends Controller
             'password_confirmation' => 'required',
             ]);
     }
+
+
+    public function appointmentRequests(){
+        $totalRecord = AppointmentRequests::where("user_id", Auth::user()->id)->count();
+        $marker = $this->getMarkers($totalRecord, request()->page);
+        $appointmentRequests = AppointmentRequests::orderBy("id", "desc")->where("user_id", Auth::user()->id)->paginate(10);
+        return view('users.appointment_requests', compact('appointmentRequests', 'totalRecord', 'marker'));
+    }
+
+
+    public function getMarkers($lastRecord, $pageNum){
+        if($pageNum == null){
+            $pageNum = 1;
+        }
+        $end = (10 * ((int)$pageNum));
+        $marker = array();
+        if((int)$pageNum == 1){
+            $marker["begin"] = (int)$pageNum;
+            $marker["index"] = (int)$pageNum;
+        }else{
+            $marker["begin"] = number_format(((10 * ((int)$pageNum))-9),0);
+            $marker["index"] = number_format(((10 * ((int)$pageNum))-9),0);
+        }
+
+        if($end > $lastRecord){
+            $marker["end"] = number_format($lastRecord,0);
+        }else{
+            $marker["end"] = number_format($end,0);
+        }
+
+        return $marker;
+    }
+
+
 }
