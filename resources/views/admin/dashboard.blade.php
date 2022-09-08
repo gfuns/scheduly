@@ -144,7 +144,9 @@
                       <div class="dropdown">
                           <button id="{{$req->id}}" class="dropbtn btn btn-primary btn-sm" onclick="myFunction(this.id)">&nbsp; Action &nbsp;</button>
                           <div id="myDropdown{{$req->id}}" class="dropdown-content">
-                            <a href="#">View Additional Info</a>
+                          <a href="#" 
+                                data-additionalinfo = "{{$req->additional_info}}"
+                                data-toggle="modal" data-target="#viewAdditionalInfo" data-backdrop="static" data-keyboard="false">View Additional Info</a>
                             <a href="{{route('admin.acceptAppointment', [$req->id])}}" onclick="return confirm('Are you sure you want to accept this request?')">Accept Request</a>
                             <a href="{{route('admin.rejectAppointment', [$req->id])}}" onclick="return confirm('Are you sure you want to reject this request?')">Reject Request</a>
                           </div>
@@ -152,7 +154,9 @@
                         @else
                         <button id="{{$req->id}}" class="dropbtn btn btn-primary btn-sm" onclick="myFunction(this.id)">&nbsp; Action &nbsp;</button>
                           <div id="myDropdown{{$req->id}}" class="dropdown-content">
-                            <a href="#">View Additional Info</a>
+                            <a href="#" 
+                                data-additionalinfo = "{{$req->additional_info}}"
+                                data-toggle="modal" data-target="#viewAdditionalInfo" data-backdrop="static" data-keyboard="false">View Additional Info</a>
                             <a href="#">Accept Request</a>
                             <a href="#">Reject Request</a>
                           </div>
@@ -180,5 +184,23 @@
 </div> <!-- / .row -->
 </div>
 </div>
+
+
+    <div class="modal fade" id="viewAdditionalInfo">
+        <div class="modal-dialog " style="margin-top: 100px;">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="box-body">
+                    <span id="additionalinfo"></span>
+
+              </div>
+              <div class="col-md-12" style="border-top: 1px solid #ccc; padding-top: 10px; margin-top: 20px">
+                  <button type="button" class="btn btn-dark btn-sm" style="float: right; margin-top: 10px" data-dismiss="modal">Close</button>                  
+              </div>
+            </div>                
+          </div>
+        </div>
+      </div>
+    </div>
 
 @endsection

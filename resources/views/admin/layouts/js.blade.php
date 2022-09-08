@@ -138,5 +138,16 @@ function updateStopTime(elt){
       }
 
 
+
+      
+$('#viewAdditionalInfo').on('show.bs.modal', function (event) {
+var button = $(event.relatedTarget) // Button that triggered the modal
+var additionalinfo = button.data('additionalinfo') // Extract info from data-* attributes
+var modal = $(this)
+document.getElementById("additionalinfo").innerHTML = additionalinfo;
+
+})
+
+
 </script>
 
