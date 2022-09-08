@@ -1,0 +1,353 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i);
+
+@import url(https://fonts.googleapis.com/css?family=Fredoka+One:400);
+
+.appointly{
+    margin-top: 35px;
+}
+
+
+
+/* Landing Page CSS */
+
+    .about-me{
+        margin-top: 50px;
+    }
+
+    .my-name{
+        text-align: center;
+        font-weight: 100px;
+        font-size: 2.5rem;
+        padding-bottom: 20px;
+    }
+
+    .fit-image{
+        object-fit: cover;
+        display: block;
+        background-size: cover;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+    }
+
+    .my-image {
+        width: 60px;
+        height: 60px;
+        background-image: url(../images/passport.jpg);
+        background-position: 50% 50%;
+        margin: 0 auto 0 7px;
+        border-radius: 50%;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .my-job{
+        text-align: center;
+        font-family: "Fredoka One";
+        font-size: 4.5rem;
+        font-weight: 300px;
+        padding-bottom: 20px;
+    }
+
+    .short-summary{
+        text-align: center;
+        font-weight: 20px;
+        font-size: 1.5rem;
+    }
+
+    .contact-buttons{
+        text-align: center;
+        padding-top: 70px;
+    }
+
+    .appointment-button{
+        border: 3px solid rgba(208,51,121,0.7);
+        /* background-image: none; */
+        background-color: #d03379;
+        letter-spacing: 1px;
+        border-style: none;
+        box-shadow: 0 0 7px 0 rgba(208,51,121,0.7);
+        text-shadow: 0 0 0 rgba(0,0,0,0);
+        font-size: 1.125rem;
+        font-weight: 600;
+        text-transform: none;
+        margin: 0 0 0 auto;
+        padding: 15px 39px 15px 38px;
+        margin: 0px 30px 0px 0px;
+        border-radius: 50px;
+        color: white;
+    }
+
+    .appointment-button:hover{
+        color:white;
+    }
+
+    .resume-button{
+        border: 3px solid #d03379;
+        font-size: 1.125rem;
+        letter-spacing: 0;
+        font-weight: 700;
+        /* text-transform: uppercase; */
+        margin: 0 auto 0 0;
+        padding: 12px 46px 12px 45px;
+        border-radius: 50px;
+    }
+
+    .resume-button:hover{
+        background-color: #d03379;
+        color:white;
+    }
+
+    @media (max-width: 991px) {
+
+        .appointly{
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        
+        .my-name{
+            text-align: center;
+            font-weight: 100px;
+            font-size: 2.0rem;
+            padding-bottom: 15px;
+        }
+
+        .my-job{
+            font-size: 2.5rem;
+            line-height: normal;
+            padding-bottom: 15px;
+        }
+
+        .short-summary{
+            text-align: center;
+            font-weight: 20px;
+            font-size: 1.5rem;
+        }
+
+        .contact-buttons{
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .appointment-button{
+            display:block;
+            margin-bottom: 25px;
+            margin-right: 0px;
+        }
+
+
+        .resume-button{
+            display:block;
+        }
+
+        .my-image {
+            width: 53px;
+            height: 53px;
+        }
+
+        
+      }
+
+      @media (max-width: 767px) {
+
+        .appointly{
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .my-name{
+            text-align: center;
+            font-weight: 100px;
+            font-size: 1.5rem;
+            padding-bottom: 15;
+        }
+
+        .my-job{
+            font-size: 2.0rem;
+            line-height: normal;
+            padding-bottom: 15px;
+        }
+
+        .short-summary{
+            text-align: center;
+            font-weight: 20px;
+            font-size: 1.0rem;
+        }
+
+        .contact-buttons{
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .appointment-button{
+            display:block;
+            margin-bottom: 25px;
+            margin-right: 0px;
+        }
+
+
+        .resume-button{
+            display:block;
+        }
+
+        .my-image {
+            width: 53px;
+            height: 53px;
+        }
+    
+      }
+
+      
+
+/* Landing Page CSS ends here */
+
+/* Authenticate Pages CSS ends here */
+
+.appointly-reg-header{
+    font-size: 16px;
+    font-weight:bold;
+}
+
+/* Authentication Pages CSS ends here */
+
+.appointly-heading{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+a{
+    text-decoration:none;
+    color: black;
+}
+
+.personnel-name{
+    font-weight: bold;
+    color: rgba(26,26,26,0.8);
+    font-size: 18px;
+    padding-bottom: 10px;
+    padding-top: 20px;
+}
+
+.intro-text{
+    font-size: 16px;
+}
+
+.schedule-type{
+    padding: 20px;
+    
+}
+
+.schedule-item{
+    border-top: 1px solid #ccc;
+    padding: 20px;
+}
+
+.schedule-item:hover{
+    background: #ccc;
+    color:black;
+}
+
+.schedule-type p{
+    font-weight: bold;
+    font-size: 18px;
+    padding-bottom: 10px;
+}
+
+.icon-before{
+    padding-right: 10px;
+    color:blueviolet;
+}
+
+.icon-after{
+    float: right;
+    color:black;
+}
+
+.no-padding{
+    padding: 0px;
+}
+
+.left-panel{
+    border-right: 1px solid #ccc;
+    padding: 30px;
+}
+
+.arrow-back-section{
+    cursor:pointer;
+    padding-left: 20px;
+}
+
+.arrow-back{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 43px;
+    height: 43px;
+    font-weight: bold;
+    color:rgb(0,105,255);
+    border: 1px solid rgba(26,26,26,0.1);
+    border-radius: 50%;
+    cursor: pointer;
+    float:left;
+}
+
+.arrow-back-text{
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight:bold;
+    padding-top: 7px;
+    float:left;
+    width: 200px;
+}
+
+.left-panel-icon{
+    margin-top: 5px;
+}
+
+.arrow-back:hover{
+    background: #f8fafc;
+}
+
+.left-panel .personnel-name{
+    font-weight: bold;
+    color: rgba(26,26,26,0.8);
+    font-size: 18px;
+    padding-top: 20px;
+}
+
+.left-panel .selected-schedule{
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.left-panel .icon{
+    font-size: 16px;
+    font-weight: bold;
+    padding-top: 10px;
+    
+}
+
+
+.right-panel-heading{
+    font-weight: bold;
+    font-size: 18px;
+    padding-left: 30px;
+    padding-top: 30px;
+}
+
+.appointment-form{
+    padding-left: 30px;
+    padding-bottom: 30px;
+}
+
+.form-element{
+    padding-top: 10px;
+}
+
+.form-label{
+    /* font-weight:bold; */
+    font-size: 16px;
+}
+
+.form-input{
+    height: 43px;
+}
