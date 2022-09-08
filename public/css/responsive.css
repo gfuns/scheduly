@@ -1,10 +1,6 @@
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-/* 
-	.nav-pad {
-		margin-left: 0; 
-		margin-right: 0;
-	} */
+
 
 	.side-nav-bg {
 
@@ -15,23 +11,12 @@
 	    color: #fff !important;
 	}
 
-	/* .service_img {
-		width: 100px;
-	}
-
-	.service_img_cable {
-		width: 60px;
-	} */
 
 } 
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
 
-	/* .nav-pad {
-		margin-left: 0; 
-		margin-right: 0;
-	} */
 
 	.side-nav-bg {
 
@@ -42,22 +27,12 @@
 	    color: #fff !important;
 	}
 
-	/* .service_img {
-		width: 100px;
-	}
 
-	.service_img_cable {
-		width: 60px;
-	} */
 } 
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
 
-	/* .nav-pad {
-		margin-left: 0; 
-		margin-right: 0;
-	} */
 
 	.side-nav-bg {
 
@@ -68,24 +43,12 @@
 	    color: #fff !important;
 	}
 
-	/* .service_img {
-		width: 120px;
-	}
-
-	.service_img_cable {
-		width: 120px;
-
-	} */
-
+	
 } 
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
 
-	/* .nav-pad {
-		margin-left: 60px; 
-		margin-right: 60px;
-	} */
 
 	.side-nav-bg {
 
@@ -96,24 +59,10 @@
 	    color: #fff !important;
 	}
 
-	/* .service_img {
-		width: 120px;
-	}
-
-	.service_img_cable {
-		width: 120px;
-
-	} */
-
 } 
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) { 
-
-	/* .nav-pad {
-		margin-left: 340px; 
-		margin-right: 340px;
-	} */
 
 	.dashboard-nav-pad {
 		margin-left: 210px; 
@@ -129,13 +78,5 @@
 	    color: #fff !important;
 	}
 
-	/* .service_img {
-		width: 120px;
-	}
-
-	.service_img_cable {
-		width: 120px;
-
-	} */
 
 }

@@ -24,26 +24,43 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//User Routes
+Route::get('/request-appointment', [App\Http\Controllers\UserController::class, 'showAppointmentForm'])->name('user.requestAppointment');
+
+Route::get('/settings', [App\Http\Controllers\UserController::class, 'settings'])->name('user.settings');
+
+Route::post('/update-profile', [App\Http\Controllers\UserController::class, 'updateProfile'])->name('user.updateProfile');
+
+Route::get('/change-password', [App\Http\Controllers\UserController::class, 'changePassword'])->name('user.password');
+
+Route::post('/update-password', [App\Http\Controllers\UserController::class, 'updatePassword'])->name('user.updatePassword');
 
 
 //Admin Routes
 
-Route::get('/settings', [App\Http\Controllers\HomeController::class, 'settings'])->name('admin.settings');
+Route::group([
+    'middleware' => ['admin'],
+    'prefix' => 'admin'
 
-Route::post('/update-profile', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('admin.updateProfile');
+], function ($router) {
+    
+        Route::get('/settings', [App\Http\Controllers\HomeController::class, 'settings'])->name('admin.settings');
 
-Route::get('/settings/password', [App\Http\Controllers\HomeController::class, 'changePassword'])->name('admin.password');
+        Route::post('/update-profile', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('admin.updateProfile');
 
-Route::post('/update-password', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('admin.updatePassword');
+        Route::get('/settings/password', [App\Http\Controllers\HomeController::class, 'changePassword'])->name('admin.password');
 
-Route::get('/registered-users', [App\Http\Controllers\HomeController::class, 'registeredUsers'])->name('admin.users');
+        Route::post('/update-password', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('admin.updatePassword');
 
-Route::get('/delete-user/{id}', [App\Http\Controllers\HomeController::class, 'deleteUser'])->name('admin.deleteUser');
+        Route::get('/registered-users', [App\Http\Controllers\HomeController::class, 'registeredUsers'])->name('admin.users');
 
-Route::get('/settings/calendar', [App\Http\Controllers\HomeController::class, 'calendarSettings'])->name('admin.calendarSettings');
+        Route::get('/delete-user/{id}', [App\Http\Controllers\HomeController::class, 'deleteUser'])->name('admin.deleteUser');
 
-Route::post('/activate-day', [App\Http\Controllers\HomeController::class, 'activateCalendarDay'])->name('admin.activateCalendarDay');
+        Route::get('/settings/calendar', [App\Http\Controllers\HomeController::class, 'calendarSettings'])->name('admin.calendarSettings');
 
-Route::post('/update-start-time', [App\Http\Controllers\HomeController::class, 'updateStartTime'])->name('admin.updateStartTime');
+        Route::post('/activate-day', [App\Http\Controllers\HomeController::class, 'activateCalendarDay'])->name('admin.activateCalendarDay');
 
-Route::post('/update-stop-time', [App\Http\Controllers\HomeController::class, 'updateStopTime'])->name('admin.updateStopTime');
+        Route::post('/update-start-time', [App\Http\Controllers\HomeController::class, 'updateStartTime'])->name('admin.updateStartTime');
+
+        Route::post('/update-stop-time', [App\Http\Controllers\HomeController::class, 'updateStopTime'])->name('admin.updateStopTime');
+    });

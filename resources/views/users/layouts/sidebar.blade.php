@@ -10,11 +10,6 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link " href="{{route('admin.users')}}">
-        <i class="fa fa-users mr-2"></i> Registered Users
-      </a>
-    </li>
-    <li class="nav-item">
       <a class="nav-link " href="/users">
         <i class="fa fa-calendar-alt mr-2"></i> Appointment Requests
       </a>
@@ -43,7 +38,7 @@
   <div class="mt-auto"></div>
 
 
-  <a href="{{ route('admin.settings') }}" class="btn btn-block btn-primary mb-4">
+  <a href="{{ route('user.settings') }}" class="btn btn-block btn-primary mb-4">
     <i class="fa fa-cog mr-2"></i> Account Settings
   </a>
 
