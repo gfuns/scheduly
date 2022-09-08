@@ -68,8 +68,14 @@
                     <td>{{date_format(new DateTime($req->appointment_date), 'l - jS F, Y')}}</td>
                     <td>{{date_format(new DateTime($req->appointment_time), 'H:iA')}}</td>
                     <td>{{$req->duration}} Hour(s)</td>
-                    <td>{{$req->status}}</td>
-                    <td><a href="{{route('admin.deleteUser', [$req->id])}}" onclick="return confirm('Are you sure you want to cancel this request?');"><div class="badge badge-soft-danger"><i class="fa fa-times"></i> Cancel Request</div></a></td>                     
+                    <td>{{$req->status == "Cancelled" ? "Cancelled by you" : $req->status}}</td>
+                    <td>
+                        @if($req->status == "Pending")
+                        <a href="{{route('user.cancelAppointment', [$req->id])}}" onclick="return confirm('Are you sure you want to cancel this request?');"><div class="badge badge-soft-danger"><i class="fa fa-times"></i> Cancel Request</div></a>
+                        @else
+                            <div class="badge badge-soft-dark" style="cursor:pointer"><i class="fa fa-times"></i> Cancel Request</div>
+                        @endif
+                    </td>                     
                 </tr>
             @endforeach
         </tbody>

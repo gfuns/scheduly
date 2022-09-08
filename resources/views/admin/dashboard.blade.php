@@ -96,7 +96,7 @@
   </div>
 
 <!-- Card -->
-<div class="card" data-toggle="lists" data-options='{"valueNames": ["ref", "amount", "service", "payment-method", "orders-status", "date"]}'>
+<div class="card">
   <div class="card-header">
     <div class="row align-items-center">
       <div class="col">
@@ -107,7 +107,7 @@
             <span class="fe fe-search text-muted"></span>
           </div>
           <div class="col">
-            <input type="search" name="search" value="" class="form-control form-control-flush search" placeholder="Search Appointment Requests">
+            <input id="search-input" type="search" name="search" value="" onkeyup="filterRecords()" class="form-control form-control-flush search" placeholder="Search Appointment Requests">
           </div>
         </form>
 
@@ -115,51 +115,48 @@
 
     </div> <!-- / .row -->
   </div>
-  <div class="b-table">
-    <table class="table has-mobile-cards">
-      <thead>
-        <tr>
-          <th>S/No</th>
-          <th>User</th>
-          <th>Appointment Date</th>
-          <th>Status</th>
-          <th>Date Received</th>
-        </tr>
-      </thead>
-  <tbody class="list">
-<!--     
-    <tr>
-      <td class="ref">
-        A
-      </td>
-      <td class="amount">
-        &#8358;0
-      </td>
-      <td class="service">
-        B
-      </td>
-      <td class="orders-status">
-        <div class="badge 
-        
-        {{'badge-soft-warning'}}
-         {{'badge-soft-success'}}
-        {{'badge-soft-danger'}} 
-        ">
-        D
-      </div>
-    </td>
-    <td class="date">
-      C
-    </td>
-  </tr> -->
-</tbody>
-</table>
+  <div class="table-responsive">
+        <table id="search-table" class="table table-nowrap card-table">
+            <thead>
+                <tr>
+
+                    <th>S/No.</th>
+                    <th>User</th>
+                    <th>Appointment Date</th>
+                    <th>Time</th>
+                    <th>Duration</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody class="list">
+                @foreach ($recentRequests as $req)
+                <tr>
+                    <td>{{$loop->index+1}}</td>
+                    <td>{{$req->user->first_name." ".$req->user->last_name}}</td>
+                    <td>{{date_format(new DateTime($req->appointment_date), 'l - jS F, Y')}}</td>
+                    <td>{{date_format(new DateTime($req->appointment_time), 'H:iA')}}</td>
+                    <td>{{$req->duration}} Hour(s)</td>
+                    <td>{{$req->status == "Cancelled" ? "Cancelled by you" : $req->status}}</td>
+                    <td>
+                      @if($req->status == "Pending")
+                        <a href="{{route('user.cancelAppointment', [$req->id])}}" onclick="return confirm('Are you sure you want to cancel this request?');"><div class="badge badge-soft-danger"><i class="fa fa-times"></i> Cancel Request</div></a>
+                        @else
+                            <div class="badge badge-soft-dark" style="cursor:pointer"><i class="fa fa-times"></i> Cancel Request</div>
+                        @endif
+                      </td>                    
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
+@if(count($recentRequests) == 0)
 <div class="text-70 text-center">
   <li class='fa fa-frown'></li>
   <br>
   <p class="text-14">No Record found!</p>
 </div>
+@endif
 </div>
 
 <nav aria-label="Page navigation example">

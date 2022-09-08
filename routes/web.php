@@ -23,11 +23,14 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //User Routes
+
 Route::get('/dashboard', [App\Http\Controllers\UserController::class, 'dashboard'])->name('user.dashboard');
 
 Route::get('/request-appointment', [App\Http\Controllers\UserController::class, 'showAppointmentForm'])->name('user.requestAppointment');
 
 Route::get('/appointment-requests', [App\Http\Controllers\UserController::class, 'appointmentRequests'])->name('user.appointmentRequests');
+
+Route::get('/cancel-appointment/{id}', [App\Http\Controllers\UserController::class, 'cancelAppointment'])->name('user.cancelAppointment');
 
 Route::get('/settings', [App\Http\Controllers\UserController::class, 'settings'])->name('user.settings');
 
@@ -65,4 +68,10 @@ Route::group([
         Route::post('/update-start-time', [App\Http\Controllers\HomeController::class, 'updateStartTime'])->name('admin.updateStartTime');
 
         Route::post('/update-stop-time', [App\Http\Controllers\HomeController::class, 'updateStopTime'])->name('admin.updateStopTime');
+
+        Route::get('/appointment-requests', [App\Http\Controllers\HomeController::class, 'appointmentRequests'])->name('admin.appointmentRequests');
+
+        Route::get('/reject-appointment/{id}', [App\Http\Controllers\HomeController::class, 'rejectAppointment'])->name('admin.rejectAppointment');
+
+        Route::get('/accept-appointment/{id}', [App\Http\Controllers\HomeController::class, 'acceptAppointment'])->name('admin.acceptAppointment');
     });

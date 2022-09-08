@@ -23,7 +23,7 @@ class UserController extends Controller
 
 
     public function dashboard(){
-        $recentRequests = AppointmentRequests::where("user_id", Auth::user()->id)->whereDate("created_at", today())->limit(10)->get();
+        $recentRequests = AppointmentRequests::orderBy("id", "desc")->where("user_id", Auth::user()->id)->whereDate("created_at", today())->limit(5)->get();
         return view('users.dashboard', compact('recentRequests'));
     }
 
@@ -143,6 +143,19 @@ class UserController extends Controller
         $marker = $this->getMarkers($totalRecord, request()->page);
         $appointmentRequests = AppointmentRequests::orderBy("id", "desc")->where("user_id", Auth::user()->id)->paginate(10);
         return view('users.appointment_requests', compact('appointmentRequests', 'totalRecord', 'marker'));
+    }
+
+
+    public function cancelAppointment($id){
+        $request = AppointmentRequests::find($id);
+        $request->status = "Cancelled";
+        if($request->save()){
+            alert()->success('Appointment Request Cancelled.', 'Success!')->persistent('Dismiss');
+            return back();
+        }else{
+            alert()->error('Something Went Wrong.', 'Error!')->persistent('Dismiss');
+            return back();
+        }
     }
 
 

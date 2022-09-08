@@ -15,7 +15,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link " href="/users">
+      <a class="nav-link " href="{{route('admin.appointmentRequests')}}">
         <i class="fa fa-calendar-alt mr-2"></i> Appointment Requests
       </a>
     </li>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\CalendarSettings;
+use App\Models\AppointmentRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Auth;
@@ -29,9 +30,10 @@ class HomeController extends Controller
         if(Auth::user()->role == 2){
             $params = [
                 'registeredUsers' => User::where("role", 1)->count(),
-                'appointmentRequests' => 0,
+                'appointmentRequests' => AppointmentRequests::count(),
             ];
-            return view('admin.dashboard', compact('params'));
+            $recentRequests = AppointmentRequests::orderBy("id", "desc")->whereDate("created_at", today())->limit(5)->get();
+            return view('admin.dashboard', compact('params', 'recentRequests'));
         }else{
             return redirect()->route('user.dashboard');
         }
@@ -188,6 +190,42 @@ class HomeController extends Controller
             return response()->json(['erorr' => 'Something Went Wrong']);
         }
     }
+
+
+    public function appointmentRequests(){
+        $totalRecord = AppointmentRequests::count();
+        $marker = $this->getMarkers($totalRecord, request()->page);
+        $appointmentRequests = AppointmentRequests::orderBy("id", "desc")->paginate(10);
+        return view('admin.appointment_requests', compact('appointmentRequests', 'totalRecord', 'marker'));
+    }
+
+
+    public function rejectAppointment($id){
+        $request = AppointmentRequests::find($id);
+        $request->status = "Rejected";
+        if($request->save()){
+            alert()->success('Appointment Request Rejected.', 'Success!')->persistent('Dismiss');
+            return back();
+        }else{
+            alert()->error('Something Went Wrong.', 'Error!')->persistent('Dismiss');
+            return back();
+        }
+    }
+
+
+    public function acceptedAppointment($id){
+        $request = AppointmentRequests::find($id);
+        $request->status = "Accepted";
+        if($request->save()){
+            alert()->success('Appointment Request Accepted.', 'Success!')->persistent('Dismiss');
+            return back();
+        }else{
+            alert()->error('Something Went Wrong.', 'Error!')->persistent('Dismiss');
+            return back();
+        }
+    }
+
+
 
     public function getMarkers($lastRecord, $pageNum){
         if($pageNum == null){
