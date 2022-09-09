@@ -83,7 +83,7 @@
                                     <!-- Select Duration -->
                                     <div class="form-group">
                                         <label class="right-form-label">Select duration</label>
-                                        <select name="duration" class="form-control{{ $errors->has('duration') ? ' is-invalid' : '' }}" required="required">
+                                        <select name="duration" class="form-control{{ $errors->has('duration') ? ' is-invalid' : '' }}">
                                             <option value="1">1 Hour Meeting</option>
                                             <option value="2">2 Hours Meeting</option>
                                             <option value="">Beyond 2 Hours Meeting</option>

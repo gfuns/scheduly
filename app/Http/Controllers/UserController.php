@@ -148,7 +148,6 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'preferred_date' => 'required',
             'preferred_time' => 'required',
-            'duration' => 'required',
             ]);
 
         $appointment = new AppointmentRequests;
