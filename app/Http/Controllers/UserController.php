@@ -159,7 +159,7 @@ class UserController extends Controller
         $appointment->additional_info = $request->additional_info;
         if($appointment->save()){
             alert()->success('Appointment Request Sent Successfully.', 'Success!')->persistent('Dismiss');
-            return redirect()->route('');
+            return redirect()->route('user.dashboard');
         }else{
             alert()->error('Something Went Wrong.', 'Error!')->persistent('Dismiss');
             return back();
