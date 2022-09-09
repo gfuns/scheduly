@@ -41,7 +41,7 @@
                         </div>
 
                         <div class="col-md-8">
-                        <form method="post" action="{{route('user.updateProfile')}}" class="mb-4">
+                        <form method="post" action="{{route('user.sendAppointmentRequest')}}" class="mb-4">
                              @csrf
                             <div class="right-box-form">
 

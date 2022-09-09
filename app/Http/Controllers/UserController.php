@@ -144,12 +144,26 @@ class UserController extends Controller
      * @param  Illuminate\Http\Request  $request
      * @return \App\Models\AppointmentRequests
      */
-    public function requestAppointment(Request $request){
+    public function sendAppointmentRequest(Request $request){
         $validatedData = $request->validate([
-            'old_password' => 'required',
-            'new_password' => 'required',
-            'password_confirmation' => 'required',
+            'preferred_date' => 'required',
+            'preferred_time' => 'required',
+            'duration' => 'required',
             ]);
+
+        $appointment = new AppointmentRequests;
+        $appointment->user_id = Auth::user()->id;
+        $appointment->appointment_date = $request->preferred_date;
+        $appointment->appointment_time = $request->preferred_time;
+        $appointment->duration = $request->duration;
+        $appointment->additional_info = $request->additional_info;
+        if($appointment->save()){
+            alert()->success('Appointment Request Sent Successfully.', 'Success!')->persistent('Dismiss');
+            return redirect()->route('');
+        }else{
+            alert()->error('Something Went Wrong.', 'Error!')->persistent('Dismiss');
+            return back();
+        }            
     }
 
 

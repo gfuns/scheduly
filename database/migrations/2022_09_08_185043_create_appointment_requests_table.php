@@ -20,7 +20,7 @@ class CreateAppointmentRequestsTable extends Migration
             $table->time('appointment_time');
             $table->integer('duration')->nullable();
             $table->text('additional_info')->nullable();
-            $table->string('status');
+            $table->string('status')->default('Pending');
             $table->timestamps();
         });
     }

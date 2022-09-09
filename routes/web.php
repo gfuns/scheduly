@@ -30,6 +30,8 @@ Route::get('/request-appointment', [App\Http\Controllers\UserController::class, 
 
 Route::get('/request-appointment/{day}', [App\Http\Controllers\UserController::class, 'showFillableAppointmentForm'])->name('user.showFillableAppointmentForm');
 
+Route::post('/send-appointment-request', [App\Http\Controllers\UserController::class, 'sendAppointmentRequest'])->name('user.sendAppointmentRequest');
+
 Route::get('/appointment-requests', [App\Http\Controllers\UserController::class, 'appointmentRequests'])->name('user.appointmentRequests');
 
 Route::get('/cancel-appointment/{id}', [App\Http\Controllers\UserController::class, 'cancelAppointment'])->name('user.cancelAppointment');
