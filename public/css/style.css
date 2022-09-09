@@ -16,7 +16,7 @@
 
     .my-name{
         text-align: center;
-        font-weight: 100px;
+         font-weight: bold;
         font-size: 2.5rem;
         padding-bottom: 20px;
     }
@@ -106,7 +106,7 @@
         
         .my-name{
             text-align: center;
-            font-weight: 100px;
+            font-weight: bold;
             font-size: 2.0rem;
             padding-bottom: 15px;
         }
@@ -148,6 +148,10 @@
       }
 
       @media (max-width: 767px) {
+          
+        .about-me{
+            margin-top: 50px;
+        }
 
         .appointly{
             padding-left: 15px;
@@ -156,9 +160,9 @@
 
         .my-name{
             text-align: center;
-            font-weight: 100px;
+            font-weight: bold;
             font-size: 1.5rem;
-            padding-bottom: 15;
+            padding-bottom: 15px;
         }
 
         .my-job{
@@ -197,6 +201,59 @@
       }
 
       
+       @media only screen and (max-width: 576px) {
+           
+        .about-me{
+            margin-top: 30px;
+        }
+      
+        .appointly{
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .my-name{
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+            padding-bottom: 25px;
+        }
+
+        .my-job{
+            font-size: 1.8rem;
+            line-height: normal;
+            padding-bottom: 15px;
+        }
+
+        .short-summary{
+            text-align: center;
+            font-weight: 20px;
+            font-size: 0.9rem;
+        }
+
+        .contact-buttons{
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .appointment-button{
+            display:block;
+            margin-bottom: 25px;
+            margin-right: 0px;
+            font-size: 14px;
+        }
+
+
+        .resume-button{
+            display:block;
+            font-size: 14px;
+        }
+
+        .my-image {
+            width: 43px;
+            height: 43px;
+        }
+    }
 
 /* Landing Page CSS ends here */
 
