@@ -104,7 +104,7 @@
                     <td>{{$loop->index+1}}</td>
                     <td>{{date_format(new DateTime($req->appointment_date), 'l - jS F, Y')}}</td>
                     <td>{{date_format(new DateTime($req->appointment_time), 'H:iA')}}</td>
-                    <td>{{$req->duration}} Hour(s)</td>
+                    <td>{{$req->duration == null ? 'Beyond 2' : $req->duration}} Hour(s)</td>
                     <td>{{$req->status == "Cancelled" ? "Cancelled by you" : $req->status}}</td>
                     <td>
                       @if($req->status == "Pending")

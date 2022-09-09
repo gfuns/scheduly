@@ -14557,3 +14557,37 @@ button:focus {
   }
   
   .show {display: block;}
+
+.appointment-left-box{
+    border-right: 1px solid #ccc;
+    margin-top: 20px;
+}
+  .custom-card{
+    width: 100%;
+    height: 50px;
+    padding: 20px;
+    color: black;
+    font-weight: bold;
+  }
+
+  .custom-card:hover{
+    background: #f9fbfd;
+  }
+  
+  .right-box-info{
+    padding: 35px 0px 0px 20px;
+    color: black;
+    font-weight: bold;
+  }
+
+  .right-box-form{
+    padding: 35px 0px 20px 10px;
+    /* border-bottom: 1px solid #ccc; */
+  }
+
+  .right-form-label{
+    font-size: 15px;
+    font-weight:bold;
+  }
+
+  

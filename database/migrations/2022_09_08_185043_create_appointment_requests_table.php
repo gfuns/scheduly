@@ -18,7 +18,7 @@ class CreateAppointmentRequestsTable extends Migration
             $table->integer('user_id');
             $table->date('appointment_date');
             $table->time('appointment_time');
-            $table->integer('duration');
+            $table->integer('duration')->nullable();
             $table->text('additional_info')->nullable();
             $table->string('status');
             $table->timestamps();

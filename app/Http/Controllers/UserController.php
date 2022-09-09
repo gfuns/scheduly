@@ -7,6 +7,8 @@ use App\Models\AppointmentRequests;
 use Illuminate\Support\Facades\Hash;
 use Auth;
 use SweetAlert;
+use Carbon\Carbon;
+use Carbon\CarbonInterval;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -118,8 +120,21 @@ class UserController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function showAppointmentForm(){
-        return view('users.request_appointment');
+    public function showAppointmentForm(){       
+        $calendarSettings = CalendarSettings::where("status", 1)->get();
+        return view('users.request_appointment', compact("calendarSettings"));
+    }
+
+      /**
+     * Show the users appointment request page.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function showFillableAppointmentForm($day){        
+        $cal = CalendarSettings::where("week_day", strtoupper($day))->first();
+        $availableDates = Collect($this->availableDates(strtolower($cal->day_full)));
+        $availableTimes = $this->availableTimes($cal->start_time, $cal->stop_time);
+        return view('users.appointment_form', compact("cal", "day", "availableDates", "availableTimes"));
     }
 
 
@@ -180,6 +195,45 @@ class UserController extends Controller
         }
 
         return $marker;
+    }
+
+
+    public function availableDates($day)
+    {   
+        $firstDay = "first ".$day." of this month";
+        $lastDay = "first ".$day." of next month";
+        return new \DatePeriod(
+            Carbon::parse($firstDay),
+            CarbonInterval::week(),
+            Carbon::parse($lastDay)
+        );
+    }
+
+
+    public function availableTimes($startTime, $stopTime)
+    {   
+        $startTime = explode(":",$startTime);
+        $stopTime = explode(":",$stopTime);
+        $timeBegins = $startTime[0];
+        $timeEnds = $stopTime[0];
+
+        $availableTimes = collect();
+        for($ctr = $timeBegins; $ctr <= $timeEnds; $ctr++){
+            $time = $this->padNumber($ctr).":00:00";
+            $availableTimes->add($time);
+        }
+
+        return $availableTimes;
+    }
+
+
+
+    public function padNumber($num){
+        if(strlen($num) < 2){
+            return "0".$num;
+        }else{
+            return $num;
+        }
     }
 
 

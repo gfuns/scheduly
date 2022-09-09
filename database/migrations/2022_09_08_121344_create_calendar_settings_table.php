@@ -16,6 +16,7 @@ class CreateCalendarSettingsTable extends Migration
         Schema::create('calendar_settings', function (Blueprint $table) {
             $table->id();
             $table->string('week_day');
+            $table->string('day_full');
             $table->time('start_time');
             $table->time('stop_time');
             $table->integer('status');

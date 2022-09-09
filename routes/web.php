@@ -28,6 +28,8 @@ Route::get('/dashboard', [App\Http\Controllers\UserController::class, 'dashboard
 
 Route::get('/request-appointment', [App\Http\Controllers\UserController::class, 'showAppointmentForm'])->name('user.requestAppointment');
 
+Route::get('/request-appointment/{day}', [App\Http\Controllers\UserController::class, 'showFillableAppointmentForm'])->name('user.showFillableAppointmentForm');
+
 Route::get('/appointment-requests', [App\Http\Controllers\UserController::class, 'appointmentRequests'])->name('user.appointmentRequests');
 
 Route::get('/cancel-appointment/{id}', [App\Http\Controllers\UserController::class, 'cancelAppointment'])->name('user.cancelAppointment');
